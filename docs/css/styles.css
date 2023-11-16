@@ -21,7 +21,20 @@ a {
     white-space: nowrap;
 }
 
-.publication video, .publication img {
+.publication video,
+.publication img {
     height: 8em;
     max-width: 100%;
+}
+
+.projects .card {
+    height: 100%;
+}
+
+.projects .card img {
+    transition: transform .25s;
+}
+
+.projects .card img:hover {
+    transform: scale(1.05);
 }
