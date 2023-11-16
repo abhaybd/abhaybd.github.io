@@ -24,7 +24,6 @@ a {
 .publication video,
 .publication img {
     height: 8em;
-    max-width: 100%;
 }
 
 .projects .card {
@@ -37,4 +36,9 @@ a {
 
 .projects .card img:hover {
     transform: scale(1.05);
+}
+
+/* Needed to remove extra underlines in card links */
+.card-link {
+    display: inline-block;
 }
