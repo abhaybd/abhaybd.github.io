@@ -89,6 +89,51 @@
     <div class="container mt-5">
         <div class="card flex-row publication">
             <div class="card-header border-0 d-sm-block d-none">
+                <img src="img/ccil_ext.png" alt="Image of a diagram of the label generation technique in CCIL.">
+            </div>
+            <div class="card-block px-2">
+                <h4 class="card-title">Data Efficient Behavior Cloning for Fine Manipulation via Continuity-based Corrective Labels</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <b>Abhay Deshpande</b>, Liyiming Ke, Quinn Pfeifer, Abhishek Gupta, Siddhartha Srinivasa
+                </h6>
+                <p class="card-text"><em>Preprint</em></p>
+                <a class="card-link" data-bs-toggle="collapse" href="#ccil_abstract" aria-expanded="false"
+                    aria-controls="ccil_abstract">
+                    Abstract
+                </a>
+                <div class="collapse mt-1 mb-2" id="ccil_abstract">
+                    <div class="card card-body pt-2 pb-2">
+                        <p>
+                            We consider imitation learning with access only
+                            to expert demonstration, whose real-world application is often
+                            limited by covariate shift due to compounding errors during
+                            execution. We investigate the effectiveness of the Continuity-based
+                            Corrective Labels for Imitation Learning (CCIL) framework
+                            in mitigating this issue for real-world fine manipulation
+                            tasks. CCIL generates corrective labels by learning a locally
+                            continuous dynamics model from demonstrations to guide the
+                            agent back toward expert states. Through extensive experiments
+                            on peg insertion and fine grasping, we provide the first empirical
+                            validation that CCIL can significantly improve imitation
+                            learning performance despite discontinuities present in contact-rich
+                            manipulation. Our key findings include: (1) Real-world
+                            manipulation exhibits sufficient local smoothness for CCIL's
+                            assumptions to hold, (2) Corrective labels are most beneficial
+                            in low-data regimes by expanding data coverage, and (3) Label
+                            filtering based on estimated dynamics model error enables
+                            performance gains. We also offer insights into the design choices
+                            and hyperparameter selection required for effectively applying
+                            CCIL to robotic domains. Our work demonstrates CCIL's
+                            practicality for alleviating compounding errors in imitation
+                            learning on physical robots.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card flex-row publication mt-3">
+            <div class="card-header border-0 d-sm-block d-none">
                 <img src="img/ccil.png" alt="Image of a diagram of the label generation technique in CCIL.">
             </div>
             <div class="card-block px-2">
