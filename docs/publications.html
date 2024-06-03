@@ -87,6 +87,7 @@
     </nav>
 
     <div class="container mt-5">
+        <h1>Conference Papers</h1>
         <div class="card flex-row publication">
             <div class="card-header border-0 d-sm-block d-none">
                 <img src="img/ccil_ext.png" alt="Image of a diagram of the label generation technique in CCIL.">
@@ -208,6 +209,40 @@
                             generalizability of CherryBot to varying object shapes and dynamics (e.g., external
                             disturbances like wind and human perturbations). Videos are available at
                             <a href="https://goodcherrybot.github.io/">this URL</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Other</h1>
+        <div class="card flex-row publication">
+            <div class="card-header border-0 d-sm-block d-none">
+                <img src="img/uw.png" alt="Logo of the University of Washington.">
+            </div>
+            <div class="card-block px-2">
+                <h4 class="card-title">Undergraduate Thesis</h4>
+                <a class="card-link" data-bs-toggle="collapse" href="#ugrad_thesis_abstract" aria-expanded="false"
+                    aria-controls="ugrad_thesis_abstract">
+                    Abstract
+                </a>
+                <a href="./pdf/ugrad_thesis.pdf" class="card-link">Document</a>
+                <div class="collapse mt-1 mb-2" id="ugrad_thesis_abstract">
+                    <div class="card card-body pt-2 pb-2">
+                        <p>
+                            We consider imitation learning with access only to expert demonstrations, whose real-world application is often limited
+                            by covariate shift due to compounding errors during execution. We investigate the effectiveness of the Continuity-based
+                            Corrective Labels for Imitation Learning (CCIL) framework in mitigating this issue for real-world fine manipulation
+                            tasks. CCIL generates corrective labels by learning a locally continuous dynamics model from demonstrations to guide the
+                            agent back toward expert states. Through extensive experiments on peg insertion and fine grasping, we provide the first
+                            empirical validation that CCIL can significantly improve imitation learning performance despite discontinuities present
+                            in contact-rich manipulation. We find that: (1) real-world manipulation exhibits sufficient local smoothness to apply
+                            CCIL, (2) generated corrective labels are most beneficial in low-data regimes, and (3) label filtering based on
+                            estimated dynamics model error enables performance gains. To effectively apply CCIL to robotic domains, we offer a
+                            practical instantiation of the framework and insights into design choices and hyperparameter selection. Our work
+                            demonstrates CCIL's practicality for alleviating compounding errors in imitation learning on physical robots.
                         </p>
                     </div>
                 </div>
