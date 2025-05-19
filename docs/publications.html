@@ -87,10 +87,54 @@
     </nav>
 
     <div class="container mt-5">
+        <h1>Preprints</h1>
+        <div class="card flex-row publication">
+            <div class="card-header border-0 d-sm-block d-none">
+                <img src="img/graspmolmo.png" alt="Image of a bimanual robot opening a water bottle.">
+            </div>
+            <div class="card-block px-2">
+                <h4 class="card-title">GraspMolmo: Generalizable Task-Oriented Grasping via Large-Scale Synthetic Data Generation</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <b>Abhay Deshpande</b>, Yuquan Deng, Arijit Ray, Jordi Salvador, Winson Han, Jiafei Duan, Kuo-Hao Zeng, Yuke Zhu, Ranjay Krishna, Rose Hendrix
+                </h6>
+                <p class="card-text"><em>Under Submission at CoRL 2025</em></p>
+                <a class="card-link" data-bs-toggle="collapse" href="#graspmolmo_abstract" aria-expanded="false"
+                    aria-controls="graspmolmo_abstract">
+                    Abstract
+                </a>
+                <a href="https://arxiv.org/abs/2505.13441" class="card-link">arXiv</a>
+                <a href="https://abhaybd.github.io/GraspMolmo/" class="card-link">Project Website</a>
+                <div class="collapse mt-1 mb-2" id="graspmolmo_abstract">
+                    <div class="card card-body pt-2 pb-2">
+                        <p>
+                            We present GraspMolmo, a generalizable open-vocabulary task-oriented grasping (TOG) model, and
+                            PRISM, a large-scale synthetic dataset used to train it. GraspMolmo predicts semantically
+                            appropriate, stable grasps conditioned on a natural language instruction and a single RGB-D
+                            frame. For instance, given "pour me some tea", GraspMolmo selects a grasp on a teapot handle
+                            rather than its body or lid.
+                            Unlike prior TOG methods, which are limited by small datasets, simplistic language, and
+                            uncluttered scenes, GraspMolmo learns from PRISM, a novel large-scale synthetic dataset of 379k
+                            samples featuring cluttered environments and diverse, realistic task descriptions. We fine-tune
+                            the Molmo visual-language model on this data, enabling GraspMolmo to generalize to novel
+                            open-vocabulary instructions and objects.
+                            In challenging real-world evaluations, GraspMolmo achieves state-of-the-art results, with a 70%
+                            prediction success on complex tasks, compared to the 35% achieved by the next best alternative.
+                            GraspMolmo also successfully demonstrates the ability to predict semantically correct bimanual
+                            grasps zero-shot.
+                            We release our synthetic dataset, code, model, and benchmarks to accelerate research in
+                            task-semantic robotic manipulation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
         <h1>Conference Papers</h1>
         <div class="card flex-row publication">
             <div class="card-header border-0 d-sm-block d-none">
-                <img src="img/ccil_ext.png" alt="Image of a diagram of the label generation technique in CCIL.">
+                <img src="img/ccil_ext.png" alt="A collage of multiple images of a robot using chopsticks to accomplish different tasks.">
             </div>
             <div class="card-block px-2">
                 <h4 class="card-title">Data Efficient Behavior Cloning for Fine Manipulation via Continuity-based Corrective Labels</h4>

@@ -47,3 +47,7 @@ i.icon {
 .card-link {
     display: inline-block;
 }
+
+body {
+    padding-bottom: 50px;
+}
