@@ -30,37 +30,52 @@ const drawDrone = (/** @type {CanvasRenderingContext2D} */ ctx) => {
     ctx.fillRect(width/2 - axle_margin - axle_width/2 - propellerRadius, height/2 + axle_height - propeller_thickness, propellerRadius*2, propeller_thickness);
 }
 
-const animateDrone = async (/** @type {HTMLCanvasElement} */ canvas, /** @type {ort.InferenceSession} */ ort_session, /** @type {Drone2DEnv} */ env) => {
-    const startTime = performance.now();
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const ctx = canvas.getContext("2d");
-    ctx.resetTransform();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.setTransform(PX_PER_M, 0, 0, -PX_PER_M, canvas.width/2, canvas.height/2);
-
-    const mousePosX = (mousePosPx.x - canvas.width/2) / PX_PER_M;
-    const mousePosY = (canvas.height/2 - mousePosPx.y) / PX_PER_M;
-
-    const state = env.getState();
-    ctx.transform(state[4], state[5], -state[5], state[4], state[0], state[1]);
-    drawDrone(ctx);
-
-    state[0] = mousePosX - state[0];
-    state[1] = mousePosY - state[1];
-
-    const data = {"states": new ort.Tensor('float32', state, [1, 7])};
-    const result = await ort_session.run(data);
-    const action = result["actions"].data;
-    for (let i = 0; i < action.length; i++) {
-        action[i] = (action[i] + 1) / 2 * env.config.physics.maxThrust;
+class DroneAnimation {
+    constructor(/** @type {HTMLCanvasElement} */ canvas, /** @type {ort.InferenceSession} */ ort_session, /** @type {Drone2DEnv} */ env) {
+        this.canvas = canvas;
+        this.ort_session = ort_session;
+        this.env = env;
+        this.last_timestamp = null;
     }
-    env.step(action);
 
-    const endTime = performance.now();
-    const loopTime = endTime - startTime;
-    setTimeout(animateDrone, Math.max(0, env.config.dt * 1000 - loopTime), canvas, ort_session, env);
+    async animate(timestamp) {
+        if (this.last_timestamp === null) {
+            this.last_timestamp = timestamp;
+        } else {
+            const dt = (timestamp - this.last_timestamp) / 1000;
+            this.last_timestamp = timestamp;
+
+            const canvas = this.canvas;
+            const ort_session = this.ort_session;
+            const env = this.env;
+
+            const mousePosX = (mousePosPx.x - window.innerWidth/2) / PX_PER_M;
+            const mousePosY = (window.innerHeight/2 - mousePosPx.y) / PX_PER_M;
+
+            let state = env.getState();
+            state[0] = mousePosX - state[0];
+            state[1] = mousePosY - state[1];
+
+            const data = {"states": new ort.Tensor('float32', state, [1, 7])};
+            const result = await ort_session.run(data);
+            const action = result["actions"].data;
+            for (let i = 0; i < action.length; i++) {
+                action[i] = (action[i] + 1) / 2 * env.config.physics.maxThrust;
+            }
+            state = env.step(action, dt);
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const ctx = canvas.getContext("2d");
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.setTransform(PX_PER_M, 0, 0, -PX_PER_M, canvas.width/2, canvas.height/2);
+            ctx.transform(state[4], state[5], -state[5], state[4], state[0], state[1]);
+            drawDrone(ctx);
+        }
+
+        requestAnimationFrame(this.animate.bind(this));
+    }
 }
 
 const sleep = async (ms) => {
@@ -175,7 +190,8 @@ const initDrone = async () => {
 
     await revealDrone(canvas, env);
 
-    animateDrone(canvas, session, env);
+    const animation = new DroneAnimation(canvas, session, env);
+    requestAnimationFrame(animation.animate.bind(animation));
 }
 
 (() => {

@@ -47,7 +47,8 @@ class Drone2DEnv {
         this.state.set(state);
     }
 
-    step(action) {
+    step(action, dt) {
+        dt = dt ?? this.config.dt;
         const thrustLeft = Math.max(0, Math.min(action[0], this.config.physics.maxThrust));
         const thrustRight = Math.max(0, Math.min(action[1], this.config.physics.maxThrust));
 
@@ -69,23 +70,23 @@ class Drone2DEnv {
         ];
         const angularAccel = netTorque / this.config.physics.inertia;
 
-        this.state[0] += this.state[2] * this.config.dt + 0.5 * accel[0] * this.config.dt * this.config.dt;
-        this.state[1] += this.state[3] * this.config.dt + 0.5 * accel[1] * this.config.dt * this.config.dt;
+        this.state[0] += this.state[2] * dt + 0.5 * accel[0] * dt * dt;
+        this.state[1] += this.state[3] * dt + 0.5 * accel[1] * dt * dt;
 
-        this.state[2] += accel[0] * this.config.dt;
-        this.state[3] += accel[1] * this.config.dt;
+        this.state[2] += accel[0] * dt;
+        this.state[3] += accel[1] * dt;
         this.state[2] = Math.max(-this.config.physics.maxInitVel, 
                                 Math.min(this.config.physics.maxInitVel, this.state[2]));
         this.state[3] = Math.max(-this.config.physics.maxInitVel, 
                                 Math.min(this.config.physics.maxInitVel, this.state[3]));
 
-        const avgThetaVel = this.state[6] + 0.5 * angularAccel * this.config.dt;
+        const avgThetaVel = this.state[6] + 0.5 * angularAccel * dt;
         const theta = Math.atan2(this.state[5], this.state[4]);
-        const newTheta = theta + avgThetaVel * this.config.dt;
+        const newTheta = theta + avgThetaVel * dt;
         this.state[4] = Math.cos(newTheta);
         this.state[5] = Math.sin(newTheta);
 
-        this.state[6] += angularAccel * this.config.dt;
+        this.state[6] += angularAccel * dt;
         this.state[6] = Math.max(-this.config.physics.maxInitAngularVel, 
                                 Math.min(this.config.physics.maxInitAngularVel, this.state[6]));
 
