@@ -1,0 +1,33 @@
+n_envs: 1024
+env:
+  dt: 0.05
+  horizon: 200
+  physics:
+    max_target_dist: 10.0
+    gravity: 9.81
+    max_thrust: 30.0
+    max_init_vel: 10.0
+    max_init_angular_vel: 6.283185307179586
+    max_init_angle_from_vert: 1.0471975511965976
+    thrust_dist: 0.2
+    mass: 1.0
+    inertia: 0.2
+  reward:
+    action_penalty: 0.0
+    target_dist_penalty: 10.0
+    vel_penalty: 0.0
+    ang_vel_penalty: 7.0
+    terminal_penalty: 1000.0
+train:
+  save_freq: 1
+  timesteps: 100000000
+  model:
+    verbose: 1
+    use_sde: true
+    n_epochs: 10
+    policy_kwargs:
+      squash_output: true
+  eval:
+    eval_freq: 1
+    deterministic: true
+    n_eval_episodes: 25
