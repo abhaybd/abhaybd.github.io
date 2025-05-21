@@ -13,7 +13,7 @@ const DRONE_DIMENSIONS = {
     propeller_period: 0.25,
 }
 
-const mousePosPx = {x: 0, y: 0};
+const mousePosPx = {x: null, y: null};
 
 const drawDrone = (/** @type {CanvasRenderingContext2D} */ ctx) => {
     const {width, height, axle_width, axle_height, axle_margin, propeller_radius, propeller_thickness, propeller_period} = DRONE_DIMENSIONS;
@@ -107,7 +107,7 @@ const revealDrone = async (/** @type {HTMLCanvasElement} */ canvas, /** @type {D
         const fadeOutAnimDur = 5.0;
         const fadeOutTime = 1.0;
         const trf = ctx.getTransform();
-        while ((performance.now() - startTime) / 1000 < fadeInAnimDur + fadeOutAnimDur) {
+        while ((performance.now() - startTime) / 1000 < fadeInAnimDur + fadeOutAnimDur || mousePosPx.x === null || mousePosPx.y === null) {
             ctx.resetTransform();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.setTransform(trf);
@@ -117,9 +117,9 @@ const revealDrone = async (/** @type {HTMLCanvasElement} */ canvas, /** @type {D
 
             ctx.save();
             if (t < fadeInAnimDur) {
-                ctx.globalAlpha = Math.max(0, t - fadeInAnimDur + fadeInTime) / fadeInTime;
+                ctx.globalAlpha = Math.min(1, Math.max(0, t - fadeInAnimDur + fadeInTime) / fadeInTime);
             } else {
-                ctx.globalAlpha = Math.max(0, fadeOutAnimDur - t + fadeOutTime) / fadeOutTime;
+                ctx.globalAlpha = Math.min(1, Math.max(0, fadeOutAnimDur - t + fadeOutTime) / fadeOutTime);
             }
             ctx.beginPath();
             ctx.fillStyle = getComputedStyle(document.body).color;
@@ -174,7 +174,7 @@ const initDrone = async () => {
     body.appendChild(canvas);
 
     await revealDrone(canvas, env);
-    
+
     animateDrone(canvas, session, env);
 }
 
