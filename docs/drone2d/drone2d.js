@@ -188,6 +188,9 @@ const initDrone = async () => {
     canvas.height = window.innerHeight;
     body.appendChild(canvas);
 
+    const button = document.getElementById("launch-button");
+    button.style.display = "none";
+
     await revealDrone(canvas, env);
 
     const animation = new DroneAnimation(canvas, session, env);
@@ -201,7 +204,8 @@ const initDrone = async () => {
             mousePosPx.y = e.clientY;
         });
 
-        setTimeout(initDrone, 5000);
+        const button = document.getElementById("launch-button");
+        button.addEventListener("click", initDrone);
     } else {
         console.log("No fine pointer detected, won't show drone");
     }
