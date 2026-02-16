@@ -203,6 +203,47 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <h1>Publications</h1>
+                <h2 class="mt-4">Tech Reports</h2>
+                <div class="card flex-row publication">
+                    <div class="card-header border-0 d-sm-block d-none">
+                        <img src="img/molmospaces.png" alt="MolmoSpaces logo">
+                    </div>
+                    <div class="card-block px-2">
+                        <h4 class="card-title">MolmoSpaces: A Large-Scale Open Ecosystem for Robot Navigation and Manipulation</h4>
+                        <h6 class="card-subtitle mb-2 text-muted" style="cursor: help;" title="Yejin Kim*, Wilbert Pumacay*, Omar Rayyan*, Max Argus*, Winson Han, Eli VanderBilt, Jordi Salvador, Abhay Deshpande, Rose Hendrix, Snehal Jauhri, Shuo Liu, Nur Muhammad Mahi Shafiullah, Maya Guru, Arjun Guru, Ainaz Eftekhar, Karen Farley, Donovan Clay, Jiafei Duan, Piper Wolters, Alvaro Herrasti, Ying-Chun Lee, Georgia Chalvatzaki, Yuchen Cui, Ali Farhadi, Dieter Fox, Ranjay Krishna">
+                            Yejin Kim*, Wilbert Pumacay*, Omar Rayyan*, Max Argus*, &hellip;, <b>Abhay Deshpande</b>, &hellip;, Ranjay Krishna
+                        </h6>
+                        <p class="card-text"><em>Preprint</em></p>
+                        <a class="card-link" data-bs-toggle="collapse" href="#molmospaces_abstract" aria-expanded="false"
+                            aria-controls="molmospaces_abstract">
+                            Abstract
+                        </a>
+                        <a href="https://allenai.org/papers/molmospaces" class="card-link">Tech Report</a>
+                        <a href="https://allenai.org/blog/molmospaces" class="card-link">Project Website</a>
+                        <div class="collapse mt-1 mb-2" id="molmospaces_abstract">
+                            <div class="card card-body pt-2 pb-2">
+                                <p>
+                                    Deploying robots at scale demands robustness to the long tail of everyday situations. The countless variations
+                                    in scene layout, object geometry, and task specifications that characterize real environments are vast and
+                                    underrepresented in existing robot benchmarks. Measuring this level of generalization requires infrastructure
+                                    at a scale and diversity that physical evaluation alone cannot provide. We introduce <b>MolmoSpaces</b>, a fully
+                                    open ecosystem to support large-scale benchmarking of robot policies. MolmoSpaces consists of over 230k
+                                    diverse indoor environments, ranging from handcrafted household scenes to procedurally generated multiroom
+                                    houses, populated with 130k richly annotated object assets, including 48k manipulable objects with 42M stable
+                                    grasps. Crucially, these environments are simulator-agnostic, supporting popular options such as MuJoCo, Isaac,
+                                    and ManiSkill. The ecosystem supports the full spectrum of embodied tasks: static and mobile manipulation,
+                                    navigation, and multiroom long-horizon tasks requiring coordinated perception, planning, and interaction across
+                                    entire indoor environments. We also design <b></b>MolmoSpaces-Bench</b>, a benchmark suite of 8 tasks in which robots
+                                    interact with our diverse scenes and richly annotated objects. Our experiments show MolmoSpaces-Bench
+                                    exhibits strong sim-to-real correlation (R = 0.96, &rho; = 0.98), confirm newer and stronger zero-shot policies
+                                    outperform earlier versions in our benchmarks, and identify key sensitivities to prompt phrasing, initial joint
+                                    positions, and camera occlusion. Through MolmoSpaces and its open-source assets and tooling, we provide a
+                                    foundation for scalable data generation, policy training, and benchmark creation for robot learning research.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <h2 class="mt-4">Conference Papers</h2>
                 <div class="card flex-row publication">
                     <div class="card-header border-0 d-sm-block d-none">
@@ -210,8 +251,8 @@
                     </div>
                     <div class="card-block px-2">
                         <h4 class="card-title">GraspMolmo: Generalizable Task-Oriented Grasping via Large-Scale Synthetic Data Generation</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <b>Abhay Deshpande</b>, Yuquan Deng, Arijit Ray, Jordi Salvador, Winson Han, Jiafei Duan, Kuo-Hao Zeng, Yuke Zhu, Ranjay Krishna, Rose Hendrix
+                        <h6 class="card-subtitle mb-2 text-muted" style="cursor: help;" title="Abhay Deshpande, Yuquan Deng, Arijit Ray, Jordi Salvador, Winson Han, Jiafei Duan, Kuo-Hao Zeng, Yuke Zhu, Ranjay Krishna, Rose Hendrix">
+                            <b>Abhay Deshpande</b>, Yuquan Deng, Arijit Ray, &hellip;, Yuke Zhu, Ranjay Krishna, Rose Hendrix
                         </h6>
                         <p class="card-text"><em>CoRL 2025</em></p>
                         <a class="card-link" data-bs-toggle="collapse" href="#graspmolmo_abstract" aria-expanded="false"
