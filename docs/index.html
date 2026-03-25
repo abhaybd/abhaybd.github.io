@@ -192,9 +192,6 @@
                     Through research, I seek to build generalist robotic systems that can learn about the world through
                     data, and operate effectively and intelligently in everyday circumstances.
                 </p>
-                <p>
-                    <b>I am applying to PhD programs in <u>robot learning</u> starting in Fall 2026!</b>
-                </p>
             </div>
         </div>
     </div>
@@ -205,6 +202,49 @@
                 <h1>Publications</h1>
                 <h2 class="mt-4">Tech Reports</h2>
                 <div class="card flex-row publication">
+                    <div class="card-header border-0 d-sm-block d-none">
+                        <img src="img/molmobot.png" alt="MolmoBot logo">
+                    </div>
+                    <div class="card-block px-2">
+                        <h4 class="card-title">MolmoB0T: Large-Scale Simulation Enables Zero-Shot Manipulation</h4>
+                        <h6 class="card-subtitle mb-2 text-muted" style="cursor: help;" title="Abhay Deshpande, Maya Guru, Rose Hendrix, Snehal Jauhri, Ainaz Eftekhar, Rohun Tripathi, Max Argus, Jordi Salvador, Haoquan Fang, Matthew Wallingford, Wilbert Pumacay, Yejin Kim, Quinn Pfeifer, Ying-Chun Lee, Piper Wolters, Omar Rayyan, Mingtong Zhang, Jiafei Duan, Karen Farley, Winson Han, Eli Vanderbilt, Dieter Fox, Ali Farhadi, Georgia Chalvatzaki, Dhruv Shah, Ranjay Krishna">
+                            <b>Abhay Deshpande</b>*, Maya Guru*, Rose Hendrix*, Snehal Jauhri*, &hellip;, Dhruv Shah, Ranjay Krishna
+                        </h6>
+                        <p class="card-text"><em>Preprint</em></p>
+                        <a class="card-link" data-bs-toggle="collapse" href="#molmobot_abstract" aria-expanded="false"
+                            aria-controls="molmobot_abstract">
+                            Abstract
+                        </a>
+                        <a href="https://arxiv.org/abs/2603.16861" class="card-link">arXiv</a>
+                        <a href="https://allenai.org/blog/molmobot-robot-manipulation" class="card-link">Project Website</a>
+                        <div class="collapse mt-1 mb-2" id="molmobot_abstract">
+                            <div class="card card-body pt-2 pb-2">
+                                <p>
+                                    A prevailing view in robot learning is that simulation alone is not enough; effective sim-to-real
+                                    transfer is widely believed to require at least some real-world data collection or task-specific
+                                    fine-tuning to bridge the gap between simulated and physical environments. We challenge that
+                                    assumption. With sufficiently large-scale and diverse simulated synthetic training data, we show
+                                    that zero-shot transfer to the real world is not only possible, but effective for both static and
+                                    mobile manipulation. We introduce MolmoBot-Engine, a fully open-source pipeline for procedural
+                                    data generation across robots, tasks, and diverse simulated environments in MolmoSpaces. With it,
+                                    we release MolmoBot-Data, a dataset of 1.8 million expert trajectories for articulated object
+                                    manipulation and pick-and-place tasks. We train three policy classes: MolmoBot, a Molmo2-based
+                                    multi-frame vision-language model with a flow-matching action head; MolmoBot-Pi0, which replicates
+                                    the &pi;<sub>0</sub> architecture to enable direct comparison; and MolmoBot-SPOC, a lightweight
+                                    policy suitable for edge deployment and amenable to RL fine-tuning. We evaluate on two robotic
+                                    platforms: the Franka FR3 for tabletop manipulation tasks and the Rainbow Robotics RB-Y1 mobile
+                                    manipulator for door opening, drawer manipulation, cabinet interaction, and mobile pick-and-place.
+                                    Without any real-world fine-tuning, our policies achieve zero-shot transfer to unseen objects and
+                                    environments. On tabletop pick-and-place, MolmoBot achieves a success rate of 79.2% in real world
+                                    evaluations across 4 settings, outperforming &pi;<sub>0.5</sub> at 39.2%. Our results demonstrate
+                                    that procedural environment generation combined with diverse articulated assets can produce robust
+                                    manipulation policies that generalize broadly to the real world.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card flex-row publication mt-3">
                     <div class="card-header border-0 d-sm-block d-none">
                         <img src="img/molmospaces.png" alt="MolmoSpaces logo">
                     </div>
@@ -218,7 +258,7 @@
                             aria-controls="molmospaces_abstract">
                             Abstract
                         </a>
-                        <a href="https://allenai.org/papers/molmospaces" class="card-link">Tech Report</a>
+                        <a href="https://allenai.org/papers/molmospaces" class="card-link">Paper</a>
                         <a href="https://allenai.org/blog/molmospaces" class="card-link">Project Website</a>
                         <div class="collapse mt-1 mb-2" id="molmospaces_abstract">
                             <div class="card card-body pt-2 pb-2">
