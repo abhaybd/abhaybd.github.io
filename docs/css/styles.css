@@ -43,6 +43,10 @@ i.icon {
     transform: scale(1.05);
 }
 
+.card-block .card-text:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
 /* Needed to remove extra underlines in card links */
 .card-link {
     display: inline-block;
